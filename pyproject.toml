@@ -1,0 +1,17 @@
+[project]
+name = "proyecto-discretas-ll"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "USUARIO", email = "328789302+nohaysimontano-cell@users.noreply.github.com" }
+]
+requires-python = ">=3.15"
+dependencies = []
+
+[project.scripts]
+proyecto-discretas-ll = "proyecto_discretas_ll:main"
+
+[build-system]
+requires = ["uv_build>=0.13.7,<0.14.0"]
+build-backend = "uv_build"
