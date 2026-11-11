@@ -18,3 +18,29 @@ def is_connected(graph):
 
     print(f"is_connected: {result}")
     return result
+
+
+def _undirected_cycle(graph):
+    visited = set()
+    for start in graph.nodes():
+        if start in visited:
+            continue
+        visited.add(start)
+        stack = [(start, None)]
+        while stack:
+            node, parent = stack.pop()
+            for neighbor in graph.neighbors(node):
+                if neighbor == parent:
+                    continue
+                if neighbor in visited:
+                    return True
+                visited.add(neighbor)
+                stack.append((neighbor, node))
+
+    return False
+
+def has_cycle(graph):
+    result = _undirected_cycle(graph)
+    print(f"has_cycle: {result}")
+    return result
+                
