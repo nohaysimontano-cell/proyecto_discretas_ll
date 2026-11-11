@@ -1,4 +1,4 @@
-def is_connected(graph):
+def _connected(graph):
     nodes = graph.nodes()
     if len(nodes) == 0:
         result = True
@@ -14,8 +14,10 @@ def is_connected(graph):
             for neighbor in graph.neighbors(node):
                 if neighbor not in visited:
                     stack.append(neighbor)
-        result = len(visited) == len(nodes)
+        return len(visited) == len(nodes)
 
+def is_connected(graph):
+    result = _connected(graph)
     print(f"is_connected: {result}")
     return result
 
@@ -42,5 +44,16 @@ def _undirected_cycle(graph):
 def has_cycle(graph):
     result = _undirected_cycle(graph)
     print(f"has_cycle: {result}")
+    return result
+
+
+def is_tree(graph):
+    result = len(graph.nodes()) > 0 and not _undirected_cycle(graph) and _connected(graph)
+    print(f"is_tree: {result}")
+    return result
+
+def is_forest(graph):
+    result = not _undirected_cycle(graph)
+    print(f"is_forest: {result}")
     return result
                 
