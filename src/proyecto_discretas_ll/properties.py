@@ -1,3 +1,5 @@
+from .graphs import DirectedGraph
+
 def _connected(graph):
     nodes = graph.nodes()
     if len(nodes) == 0:
@@ -14,6 +16,8 @@ def _connected(graph):
         for neighbor in graph.adjacent_nodes(node):
             if neighbor not in visited:
                 stack.append(neighbor)
+
+                
     return len(visited) == len(nodes)
 
 def is_connected(graph):
@@ -40,6 +44,31 @@ def _undirected_cycle(graph):
                 stack.append((neighbor, node))
 
     return False
+
+def _directed_cycle(graph):
+    visiting = set()
+    done = set()
+
+    def visit(node):
+        visiting.add(node)
+        for neighbor in graph.neighbors(node):
+            if neighbor in visiting:     
+                return True
+            if neighbor not in done and visit(neighbor):
+                return True
+        visiting.remove(node)
+        done.add(node)
+        return False
+
+    for start in graph.nodes():
+        if start not in done and visit(start): # type: ignore
+            return True
+    return False
+
+def _cycle(graph):
+    if isinstance(graph, DirectedGraph):
+        return 
+        
 
 def has_cycle(graph):
     result = _undirected_cycle(graph)
