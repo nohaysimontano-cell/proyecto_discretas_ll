@@ -55,4 +55,6 @@ class DirectedGraph:
     def adjacent_nodes(self, node):
         return set(self._adjacency[node]) | self._incoming[node]
 
-    
+        
+    def in_degree(self, node):
+        return len(self._incoming[node])
