@@ -46,7 +46,6 @@ Ambos tipos de grafo se guardan como `dict[nodo, dict[vecino, peso]]`.
 - Recorrer los vecinos de un nodo cuesta solo lo que vale su grado, lo que hace
   eficiente el recorrido en profundidad que usan todas las funciones.
 - Los nodos pueden ser cualquier texto, sin necesidad de numerarlos.
-- _(agrega aquí una razón propia: qué te pareció más fácil de implementar o entender)_
 
 En el grafo dirigido también se guarda, por cada nodo, el conjunto de nodos que
 apuntan a él (`_incoming`). Sirve para calcular el grado de entrada y la
